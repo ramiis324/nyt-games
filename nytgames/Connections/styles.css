@@ -1,0 +1,111 @@
+@import url("../Wordle/styles.css");
+
+/* Page-specific overrides for Connections */
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+main {
+  padding: 28px;
+  text-align: center;
+}
+
+main h1 {
+  margin: 6px 0 8px;
+  font-size: 20px;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Fixed 4x4 grid centered, original spacing 10px */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(100px, 1fr));
+  gap: 10px; /* keep original spacing */
+  margin: 0 auto; /* centers horizontally */
+  width: min(90vw, 420px); /* matches your original max width */
+}
+
+/* Tile/card */
+.tile {
+  padding: 6px 8px; /* keep original padding */
+  background: var(--primary-color);
+  border-radius: 12px;
+  box-shadow: 0 0 10px var(--light-shadow);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  font-weight: 700;
+  font-size: clamp(12px, 2vw, 16px); /* scales with viewport but stays smaller */
+  text-transform: uppercase;
+  line-height: 1.15;
+
+  word-break: break-word;
+  overflow-wrap: anywhere;
+
+  cursor: pointer;
+  user-select: none;
+
+  transition:
+    transform 140ms cubic-bezier(.2,.9,.2,1),
+    box-shadow 140ms cubic-bezier(.2,.9,.2,1),
+    background-color 140ms ease;
+}
+
+/* Make text scale inside tile */
+.tile span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: calc(0.9em + 0.5vw);
+}
+
+/* hover lift */
+.tile:hover {
+  transform: translateY(-4px);
+  box-shadow: inset 0 -4px rgba(0,0,0,0.15);
+}
+
+/* press */
+.tile:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow: inset 0 -3px rgba(0,0,0,0.15);
+}
+
+/* selected state */
+.tile.selected {
+  background: var(--wrong-place-color);
+  box-shadow: inset 0 -3px rgba(0,0,0,0.15);
+}
+
+.tile.solved {
+  background: var(--right-color);
+  color: #fff;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.feedback {
+  margin-top: 8px;
+  min-height: 1.2em;
+  font-weight: 700;
+}

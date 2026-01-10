@@ -1,0 +1,5 @@
+@import url("../Wordle/styles.css");
+
+/* Page-specific overrides for Spelling Bee */
+main { padding: 28px; text-align: center; }
+main h1 { margin: 6px 0 8px; font-size: 20px; }

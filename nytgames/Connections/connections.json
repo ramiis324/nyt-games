@@ -1,0 +1,82 @@
+[
+  {
+    "groups": [
+      { "label": "CANINE BREEDS", "words": ["BEAGLE", "POODLE", "BOXER", "HUSKY"] },
+      { "label": "SLANG FOR MONEY", "words": ["CASH", "DOUGH", "BUCKS", "BREAD"] },
+      { "label": "CUTS OF BEEF", "words": ["RIB", "LOIN", "FLANK", "BRISKET"] },
+      { "label": "SILENT K", "words": ["KNIFE", "KNEE", "KNOT", "KNOW"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "GREEK LETTERS", "words": ["ALPHA", "BETA", "GAMMA", "DELTA"] },
+      { "label": "OCEAN PREDATORS", "words": ["SHARK", "ORCA", "MARLIN", "BARRACUDA"] },
+      { "label": "FAMOUS PAINTERS", "words": ["PICASSO", "DA VINCI", "VAN GOGH", "MONET"] },
+      { "label": "RARE MINERALS", "words": ["TANTALITE", "RUTILE", "CORUNDUM", "ZIRCON"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "ARCHITECTURAL STYLES", "words": ["GOTHIC", "BAROQUE", "ROMANESQUE", "BRUTALIST"] },
+      { "label": "OBSCURE INSTRUMENTS", "words": ["THEREMIN", "ONDES MARTENOT", "NYCKELHARPA", "DULCIMER"] },
+      { "label": "POISONOUS PLANTS", "words": ["ACONITE", "BELLADONNA", "OLEANDER", "HEMLock"] },
+      { "label": "CLASSICAL COMPOSERS", "words": ["BACH", "HAYDN", "MOZART", "BEETHOVEN"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "UNUSUAL BIRDS", "words": ["KAKAPO", "TOUCAN", "HOATZIN", "PITAHA"] },
+      { "label": "MYTHICAL CREATURES", "words": ["CHIMERA", "HIPPOGRYPH", "BASILISK", "MINOTAUR"] },
+      { "label": "RARE FRUITS", "words": ["RAMBUTAN", "PERSIMMON", "SAPOTE", "FEIJOA"] },
+      { "label": "OBSCURE SPORTS", "words": ["BOCCIA", "KORFBALL", "SEPĀKTĀKRAW", "SHIN-KICKING"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "SATELLITES", "words": ["EUROPA", "TITAN", "GANYMEDE", "CALLISTO"] },
+      { "label": "PHILOSOPHERS", "words": ["KANT", "NIETZSCHE", "HEGEL", "DESCARTES"] },
+      { "label": "HARD SCIENCE TERMS", "words": ["ENTROPY", "QUARK", "PHOTON", "LEPTON"] },
+      { "label": "UNCOMMON COLORS", "words": ["CERULEAN", "FALLOW", "AMARANTH", "TAUPE"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "RARE TREES", "words": ["BAOBAB", "COCONUT", "KAPOK", "GINKGO"] },
+      { "label": "INSTRUMENT PARTS", "words": ["BRIDGE", "FRETBOARD", "SOUNDHOLE", "VALVE"] },
+      { "label": "HISTORICAL FIGURES", "words": ["CLEOPATRA", "ATTILA", "GENGHIS", "ELIZABETH"] },
+      { "label": "OBSCURE TECH TERMS", "words": ["BLOB", "CACHE", "QUEUE", "HYPERCALL"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "RARE ANIMALS", "words": ["AXOLOTL", "TARDIGRADE", "OKAPI", "PANGOLIN"] },
+      { "label": "FAMOUS LITERARY CHARACTERS", "words": ["HUCKLEBERRY", "HEATHCLIFF", "GANDALF", "ATON"] },
+      { "label": "SPACE PHENOMENA", "words": ["PULSAR", "QUASAR", "NEBULA", "SUPERNOVA"] },
+      { "label": "OBSCURE WINES", "words": ["VIN SANTO", "AMARONE", "TXAKOLI", "PET-NAT"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "RARE LANGUAGES", "words": ["MANX", "TWI", "QUECHUA", "TAMAZIGHT"] },
+      { "label": "MINOR PLANETS", "words": ["CERES", "EROS", "PALLAS", "VESTA"] },
+      { "label": "OBSCURE MOVIES", "words": ["STALKER", "ANDREI RUBLEV", "SOLARIS", "PI"] },
+      { "label": "UNUSUAL FOODS", "words": ["HAGGIS", "KOMBUCHA", "LUFA", "SAGO"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "OBSCURE BODY PARTS", "words": ["UVULA", "PHALANX", "CLAVICLE", "CARPAL"] },
+      { "label": "OBSCURE MYTHS", "words": ["ANANSI", "AMATERASU", "CEDAR GOD", "RA-KEH"] },
+      { "label": "RARE INSECTS", "words": ["LANTERNFISH", "MAYFLY", "DRAGONFLY", "KATYDID"] },
+      { "label": "OBSCURE GEMS", "words": ["SPINEL", "CHRYSOBERYL", "ANDALUSITE", "KUNZITE"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "OBSCURE CITIES", "words": ["TALLINN", "ULAN BATOR", "KIGALI", "OSLO"] },
+      { "label": "OBSCURE INVENTIONS", "words": ["SEXTANT", "ASTROLABE", "PERISCOPE", "DIALYSIS"] },
+      { "label": "OBSCURE ANIMAL SOUNDS", "words": ["COO", "SNORTLE", "TRILL", "HONK"] },
+      { "label": "UNCOMMON FLOWERS", "words": ["LUPINE", "ERANTHIS", "MIMOSA", "TROPICAL ORCHID"] }
+    ]
+  }
+]

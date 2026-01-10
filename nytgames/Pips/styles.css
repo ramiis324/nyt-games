@@ -1,0 +1,8 @@
+@import url("../Wordle/styles.css");
+
+/* Page-specific overrides for Pips (kept minimal)
+   This file intentionally imports the shared nav/game styles
+   so each page can later be customized independently. */
+
+main { padding: 28px; text-align: center; }
+main h1 { margin: 6px 0 8px; font-size: 20px; }
