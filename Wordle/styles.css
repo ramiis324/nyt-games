@@ -1,0 +1,374 @@
+:root {
+    --bg: #e8f0f8;
+    --primary-color: #ffffff;
+    --secondary-color: #e8e8e8;
+    --right-color: #8fe587;
+    --wrong-place-color: #ffe56f;
+    --wrong-color: #787c7e;
+    --light-shadow: rgba(234, 234, 234, 0.7);
+    --font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg);
+    font-family: var(--font-family);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* center the main content vertically */
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    border: 2.5px solid rgba(0,0,0,0.06); /* default subtle border */
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+#inp {
+    width: clamp(40px, 8vw, 60px);
+    height: clamp(40px, 8vw, 60px);
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    box-shadow: 0 0 10px var(--light-shadow);
+    animation: intro 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+input {
+    width: 80%;
+    height: 80%;
+    border: none;
+    outline: none;
+    font-size: clamp(20px, 5vw, 32px);
+    text-align: center;
+    background-color: transparent;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+@keyframes wiggle {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes intro {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Wordle result states (applied to the input) */
+input.correct {
+    background-color: var(--right-color);
+    color: #ffffff;
+    border-radius: 8px;
+    box-shadow: inset 0 -4px rgba(0,0,0,0.15);
+    transition: background-color 200ms ease, transform 200ms ease;
+}
+
+input.present {
+    background-color: var(--wrong-place-color);
+    color: #000000;
+    border-radius: 8px;
+    box-shadow: inset 0 -3px rgba(0,0,0,0.12);
+    transition: background-color 200ms ease, transform 200ms ease;
+}
+
+input.absent {
+    background-color: var(--wrong-color);
+    color: #ffffff;
+    border-radius: 8px;
+    opacity: 0.95;
+    transition: background-color 200ms ease, opacity 200ms ease;
+}
+
+/* previous guess row and tile styles */
+.previous-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+    width: 100%;
+    max-width: 420px;
+}
+
+/* container to stack previous rows above the input row */
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* when history exists, push content up so the input moves upward */
+.game.has-history {
+    justify-content: flex-end;
+}
+
+/* history container: holds previous rows and becomes scrollable when long */
+.history {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 420px;
+    max-height: 40vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+/* Separate gradient overlay element that sits above the history area.
+   It's positioned higher so it doesn't 'seep' into content too soon. */
+/* gradient overlay removed — no .history-gradient element used */
+
+/* congrats modal */
+.congrats-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.35);
+    z-index: 9999;
+}
+
+.congrats {
+    background: var(--primary-color);
+    color: #000;
+    padding: 18px 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    text-align: center;
+    min-width: 220px;
+}
+
+.congrats h2 { margin: 0 0 8px 0; font-size: 18px; }
+.congrats p { margin: 0; }
+.congrats button {
+    margin-top: 12px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    background: var(--secondary-color);
+    cursor: pointer;
+}
+
+.tile {
+    width: clamp(40px, 8vw, 60px);
+    height: clamp(40px, 8vw, 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    box-shadow: 0 0 10px var(--light-shadow);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: clamp(20px, 5vw, 28px);
+    background-color: var(--primary-color);
+}
+
+.tile.correct {
+    background-color: var(--right-color);
+    color: #ffffff;
+}
+
+.tile.present {
+    background-color: var(--wrong-place-color);
+    color: #000000;
+}
+
+.tile.absent {
+    background-color: var(--wrong-color);
+    color: #ffffff;
+}
+
+/* Animations */
+@keyframes pop {
+    0% { transform: translateY(10px) scale(0.9); opacity: 0; }
+    60% { transform: translateY(-6px) scale(1.03); opacity: 1; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+@keyframes flip {
+    0% { transform: rotateX(0deg); }
+    50% { transform: rotateX(-90deg); }
+    100% { transform: rotateX(0deg); }
+}
+
+@keyframes rowIn {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.previous-row { opacity: 0; transform: translateY(6px); }
+.previous-row.enter { animation: rowIn 320ms cubic-bezier(.2,.9,.2,1) forwards; }
+
+/* apply flip reveal on inputs when guess evaluated */
+input.reveal {
+    transform-origin: center center;
+    animation: flip 600ms ease-in-out;
+}
+
+.tile.pop { animation: pop 360ms cubic-bezier(.2,.9,.2,1) forwards; }
+
+/* focus pulse for input container */
+#inp:focus-within { box-shadow: 0 6px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
+
+/* congrats modal improvements */
+.congrats {
+        background: linear-gradient(180deg, #fffef8, #ffffff);
+        color: #0b2a2e;
+        padding: 20px 24px;
+        border-radius: 14px;
+        box-shadow: 0 18px 40px rgba(14,30,37,0.25), 0 2px 8px rgba(0,0,0,0.08);
+        text-align: center;
+        min-width: 260px;
+        transform: scale(0.9);
+        animation: pop 360ms cubic-bezier(.2,.9,.2,1) forwards;
+        position: relative;
+        overflow: visible;
+}
+
+.congrats h2 { font-size: 20px; letter-spacing: 0.6px; }
+.congrats p { color: #0b2a2e; opacity: 0.9; }
+
+/* confetti pieces */
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 14px;
+    opacity: 0.95;
+    will-change: transform, opacity;
+    border-radius: 2px;
+}
+
+@keyframes confettiFall {
+    0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+    70% { opacity: 1; }
+    100% { transform: translateY(60vh) rotate(540deg); opacity: 0; }
+}
+
+/* smoother history scrolling */
+.history { scroll-behavior: smooth; }
+
+/* Restart button styles */
+.restart-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    /* fix to bottom of viewport */
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    z-index: 1200;
+    margin: 0 0 10px 0;
+    transition: all 300ms ease-in-out;
+}
+
+.restart-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 84px;
+    height: clamp(40px, 8vw, 60px);
+    padding: 0 10px;
+    background-color: var(--primary-color);
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 0 10px var(--light-shadow);
+    cursor: pointer;
+    color: inherit;
+    font-weight: 700;
+    text-transform: none;
+    animation: intro 0.5s ease-in-out;
+}
+
+.restart-button span { position: static; width: auto; height: auto; overflow: visible; clip: auto; }
+.restart-button svg { width: 18px; height: 18px; display: block; }
+.restart-button svg.spin { animation: spin 600ms linear; }
+
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* Top-centered sliding nav */
+.top-nav {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -120%);
+    transition: transform 360ms cubic-bezier(.2,.9,.2,1);
+    z-index: 1400;
+    pointer-events: none;
+    overflow: visible;
+}
+.top-nav.open { transform: translate(-50%, 6px); pointer-events: auto; }
+.top-nav-inner {
+    width: min(640px, 92%);
+    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,248,250,0.98));
+    box-shadow: 0 8px 26px rgba(14,30,37,0.10);
+    border-radius: 9999px; /* pill shape */
+    padding: 6px 10px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 3;
+    overflow: visible;
+}
+
+.nav-row { display: flex; gap: 12px; align-items: center; }
+.nav-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 9999px;
+    background: #ffffff; /* white circle */
+    border: 3.5px solid rgba(0,0,0,0.08); /* slightly thicker default border */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+    cursor: pointer;
+    transition: transform 200ms cubic-bezier(.2,.9,.2,1), box-shadow 200ms cubic-bezier(.2,.9,.2,1), background-color 180ms ease, border-color 180ms ease, border-width 180ms ease;
+    padding: 4px;
+}
+.nav-icon { width: 22px; height: 22px; display: block; object-fit: contain; border-radius: 50%; }
+.nav-btn:focus { outline: 3px solid rgba(59,130,246,0.18); outline-offset: 3px; }
+.nav-btn svg { display: block; }
+
+/* per-game colored borders */
+.nav-btn[data-game="pips"] { border-color: #DC2626; }
+.nav-btn[data-game="connections"] { border-color: #8B5CF6; }
+.nav-btn[data-game="wordle"] { border-color: #059669; }
+.nav-btn[data-game="strands"] { border-color: #3B82F6; }
+.nav-btn[data-game="spellingbee"] { border-color: #F59E0B; }
+
+/* hover / focus / active animations */
+.nav-btn:hover { transform: translateY(-6px) scale(1.04); box-shadow: 0 14px 40px rgba(12,20,30,0.12); }
+.nav-btn:active { transform: translateY(-2px) scale(0.98); box-shadow: 0 8px 22px rgba(12,20,30,0.10); transition-duration: 120ms; }
+.nav-btn:active { transform: translateY(-2px) scale(0.98); box-shadow: 0 8px 22px rgba(12,20,30,0.10); transition-duration: 120ms; }
+.nav-btn[aria-selected="true"] { transform: translateY(-6px) scale(1.02); box-shadow: 0 18px 56px rgba(12,20,30,0.18); border-width: 5px; }
+
+/* subtle pop animation when nav opens */
+@keyframes navPop {
+    0% { transform: translateY(-12px) scale(0.98); opacity: 0; }
+    60% { transform: translateY(-4px) scale(1.02); opacity: 1; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+.top-nav.open .nav-btn { animation: navPop 260ms cubic-bezier(.2,.9,.2,1) both; }
+
+/* Make sure nav doesn't overlap the main content when open */
+
+
+/* small screens adjustments */
+@media (max-width: 480px) {
+    .nav-btn { width: 44px; height: 44px; }
+    .top-nav.open { transform: translate(-50%, 8px); }
+}

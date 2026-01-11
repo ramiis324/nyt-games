@@ -1,0 +1,297 @@
+@import url("../Wordle/styles.css");
+
+/* Page-specific overrides for Connections */
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+main {
+  padding: 28px;
+  text-align: center;
+}
+
+main h1 {
+  margin: 6px 0 8px;
+  font-size: 20px;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Fixed 4x4 grid centered, original spacing 10px */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(100px, 1fr));
+  gap: 10px; /* keep original spacing */
+  margin: 0 auto; /* centers horizontally */
+  width: min(90vw, 420px); /* matches your original max width */
+}
+
+/* Update .grid to handle the opacity transition for shuffle */
+.grid {
+  transition: opacity 0.2s ease;
+}
+
+/* Base Tile font fixes */
+.tile {
+  font-size: 1rem; /* Better default than .7rem */
+  opacity: 0; /* Handled by popIn animation */
+  transform: scale(0.8);
+}
+
+.tile.small-text { font-size: 0.8rem !important; }
+.tile.tiny-text { font-size: 0.65rem !important; white-space: normal; }
+
+/* The "Shuffle" and "Start" Entrance Animation */
+@keyframes popIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animation for when a group is solved */
+.tile.solved {
+  animation: solveJump 0.5s ease;
+  background: var(--right-color);
+  color: #fff;
+}
+
+@keyframes solveJump {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Tile/card */
+/* Tile/card */
+.tile {
+  /* Layout & Design */
+  padding: 15px; /* Reduced padding slightly to give text more room */
+  background: var(--primary-color);
+  border-radius: 12px;
+  box-shadow: 0 0 10px var(--light-shadow);
+  
+  /* Flexbox Centering */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  /* THE FIX: Logic for scaling text */
+  font-size: .8rem;/* 13% of container width, but never smaller than 10px or bigger than 18px */
+  font-weight: 600;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+
+
+/* hover lift */
+.tile:hover {
+  transform: translateY(-4px);
+  box-shadow: inset 0 -4px rgba(0,0,0,0.15);
+}
+
+/* press */
+.tile:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow: inset 0 -3px rgba(0,0,0,0.15);
+}
+
+/* selected state */
+.tile.selected {
+  background: var(--wrong-place-color);
+  box-shadow: inset 0 -3px rgba(0,0,0,0.15);
+}
+
+.tile.solved {
+  background: var(--right-color);
+  color: #fff;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.feedback {
+  margin-top: 8px;
+  min-height: 1.2em;
+  font-weight: 700;
+}
+
+/* Container for the 4 life dots */
+.mistakes-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+#dots {
+  display: flex;
+  gap: 8px;
+  margin-left: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: #5a5a42; /* NYT Dark Gray/Brown */
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+/* This class is added by JS when a mistake is made */
+.dot.lost {
+  opacity: 0.15;
+  transform: scale(0.6);
+}
+
+.mistakes-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+
+/* Flip Animations */
+@keyframes flipOut {
+  0% { transform: rotateX(0deg); opacity: 1; }
+  100% { transform: rotateX(90deg); opacity: 0; }
+}
+
+@keyframes flipIn {
+  0% { transform: rotateX(-90deg); opacity: 0; }
+  100% { transform: rotateX(0deg); opacity: 1; }
+}
+
+.flip-out { animation: flipOut 0.4s ease forwards; }
+.flip-in { animation: flipIn 0.4s ease forwards; }
+
+/* State Colors */
+.tile.error-flash { background-color: #e74c3c !important; color: white; }
+.tile.success-flash { background-color: #6aaa64 !important; color: white; }
+
+/* Update the .solved-row in styles.css */
+.solved-row {
+  width: min(90vw, 420px); /* Matches grid width */
+  min-height: 84px; /* Fixed height for consistency */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto 8px; /* Centered with small bottom margin */
+  padding: 8px 16px;
+  border-radius: 10px;
+  box-sizing: border-box; /* Includes padding in the height calculation */
+  
+  background-color: var(--right-color); /* */
+  color: #000; /* Dark text for better contrast on category colors */
+  animation: solvePop 0.5s cubic-bezier(.17,.67,.83,.67); /* */
+}
+
+.solved-row h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.solved-row p {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+#solved-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Wrong Answer Wiggle */
+.wiggle {
+  animation: wiggle 0.4s ease;
+  background-color: #e74c3c !important;
+  color: white !important;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+}
+
+@keyframes solvePop {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+button {
+  background-color: var(--primary-color);
+  border: none;
+  padding: 5px;
+  border-radius: 7px;
+  transition: 
+    background-color .6s ease,
+    font-weight .7s ease,
+    width .7s ease
+  ;
+}
+
+button:hover {
+  font-weight: bold;
+  background-color: var(--wrong-place-color);
+}
+
+button:active {
+  background-color: var(--right-color);
+}
+
+/* Add to styles.css */
+.one-away-text {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #5a5a42;
+  letter-spacing: 0.05em;
+  animation: fadeInOut 1.5s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(5px); }
+  20% { opacity: 1; transform: translateY(0); }
+  80% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-5px); }
+}
+
+/* Ensure the dots container has a consistent height to prevent layout jumping */
+#dots {
+  display: flex;
+  gap: 8px;
+  margin-left: 10px;
+  min-height: 20px;
+  align-items: center;
+  justify-content: center;
+}

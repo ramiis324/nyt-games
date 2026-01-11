@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spelling Bee</title>
+  <link rel="stylesheet" href="../Wordle/styles.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="top-nav" aria-label="Games navigation">
+    <div class="top-nav-inner">
+      <div class="nav-row" role="tablist" aria-label="Games">
+        <a class="nav-btn" role="tab" aria-selected="false" aria-label="Pips" data-game="pips" href="../Pips/index.html">
+          <img class="nav-icon" src="../icons/pips.png" alt="Pips" />
+        </a>
+        <a class="nav-btn" role="tab" aria-selected="false" aria-label="Connections" data-game="connections" href="../Connections/index.html">
+          <img class="nav-icon" src="../icons/connections.png" alt="Connections" />
+        </a>
+        <a class="nav-btn" role="tab" aria-selected="false" aria-label="Wordle" data-game="wordle" href="../Wordle/index.html">
+          <img class="nav-icon" src="../icons/wordle.webp" alt="Wordle" />
+        </a>
+        <a class="nav-btn" role="tab" aria-selected="false" aria-label="Strands" data-game="strands" href="../Strands/index.html">
+          <img class="nav-icon" src="../icons/strands.webp" alt="Strands" />
+        </a>
+        <a class="nav-btn" role="tab" aria-selected="true" aria-label="Spelling Bee" data-game="spellingbee" href="./index.html">
+          <img class="nav-icon" src="../icons/spelling-bee.webp" alt="Spelling Bee" />
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="spelling-bee">
+    <div class="score-section">
+      <div class="rank-container">
+        <span id="rank-name">Beginner</span>
+        <span id="points-to-next">Next level at 10 pts</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div id="progress-fill" style="width: 0%"></div>
+      </div>
+      <div class="current-score-display">Score: <span id="current-score">0</span></div>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <div class="word-input-area">
+      <span id="input-display"></span>
+      <span class="cursor">|</span>
+    </div>
+
+    <div class="hive">
+      <div class="cell outer" id="cell-0"></div>
+      <div class="cell outer" id="cell-1"></div>
+      <div class="cell outer" id="cell-2"></div>
+      <div class="cell center" id="cell-center"></div>
+      <div class="cell outer" id="cell-3"></div>
+      <div class="cell outer" id="cell-4"></div>
+      <div class="cell outer" id="cell-5"></div>
+    </div>
+
+    <div class="controls">
+      <button id="delete">Delete</button>
+      <button id="shuffle-hive">↺</button>
+      <button id="submit">Enter</button>
+    </div>
+    
+    <div class="found-words-container">
+      <h4>Found Words (<span id="word-count">0</span>)</h4>
+      <div id="found-words-list"></div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="top-nav" aria-label="Games navigation">
+        <div class="top-nav-inner">
+            <div class="nav-row" role="tablist" aria-label="Games">
+                <a class="nav-btn" role="tab" aria-selected="false" aria-label="Pips" data-game="pips" href="../Pips/index.html">
+                    <img class="nav-icon" src="../icons/pips.png" alt="Pips"/>
+                </a>
+                <a class="nav-btn" role="tab" aria-selected="false" aria-label="Connections" data-game="connections" href="../Connections/index.html">
+                    <img class="nav-icon" src="../icons/connections.png" alt="Connections"/>
+                </a>
+                <a class="nav-btn" role="tab" aria-selected="true" aria-label="Wordle" data-game="wordle" href="./index.html">
+                    <img class="nav-icon" src="../icons/wordle.webp" alt="Wordle"/>
+                </a>
+                <a class="nav-btn" role="tab" aria-selected="false" aria-label="Strands" data-game="strands" href="../Strands/index.html">
+                    <img class="nav-icon" src="../icons/strands.webp" alt="Strands"/>
+                </a>
+                <a class="nav-btn" role="tab" aria-selected="false" aria-label="Spelling Bee" data-game="spellingbee" href="../SpellingBee/index.html">
+                    <img class="nav-icon" src="../icons/spelling-bee.webp" alt="Spelling Bee"/>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div id="inp"><input type="text" name="" id=""></div>
+        <div id="inp"><input type="text" name="" id=""></div>
+        <div id="inp"><input type="text" name="" id=""></div>
+        <div id="inp"><input type="text" name="" id=""></div>
+        <div id="inp"><input type="text" name="" id=""></div>
+    </div>
+    <div class="restart-container">
+        <button class="restart-button" aria-label="Restart game">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M21 12a9 9 0 10-2.37 5.75" stroke="#123" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M21 3v6h-6" stroke="#123" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Restart</span>
+        </button>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            requestAnimationFrame(()=>{
+                const nav = document.querySelector('.top-nav');
+                if(nav) setTimeout(()=> nav.classList.add('open'), 120);
+            });
+
+            // keyboard navigation: arrow keys move selection and focus
+            document.addEventListener('keydown', (e)=>{
+                const nav = document.querySelector('.top-nav');
+                if(!nav) return;
+                const items = Array.from(nav.querySelectorAll('.nav-btn'));
+                const activeIndex = items.findIndex(b=> b.getAttribute('aria-selected')==='true');
+                if(e.key === 'ArrowRight'){
+                    const idx = (activeIndex + 1) % items.length;
+                    items.forEach(b=> b.setAttribute('aria-selected','false'));
+                    items[idx].setAttribute('aria-selected','true');
+                    items[idx].focus();
+                } else if(e.key === 'ArrowLeft'){
+                    const idx = (activeIndex - 1 + items.length) % items.length;
+                    items.forEach(b=> b.setAttribute('aria-selected','false'));
+                    items[idx].setAttribute('aria-selected','true');
+                    items[idx].focus();
+                } else if(e.key === 'Enter' || e.key === ' ') {
+                    // activate focused nav item
+                    const focused = document.activeElement;
+                    if(focused && focused.classList.contains('nav-btn') && focused.href) {
+                        window.location.href = focused.href;
+                    }
+                }
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

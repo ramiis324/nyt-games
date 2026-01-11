@@ -1,0 +1,114 @@
+@import url("../Wordle/styles.css");
+
+.spelling-bee {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  user-select: none;
+}
+
+/* --- 3D Progress Bar --- */
+.score-section {
+  width: min(90vw, 400px);
+  margin-bottom: 30px;
+}
+
+.progress-bar-bg {
+  height: 12px;
+  background: #e6e6e6;
+  border-radius: 10px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+
+#progress-fill {
+  height: 100%;
+  background: #f7da21;
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+/* --- 3D Honeycomb Hive (Squares) --- */
+.hive {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  margin: 20px auto;
+}
+
+.cell {
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  background: var(--primary-color, #eeeeee);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #333; /* Ensuring text is dark and visible */
+  cursor: pointer;
+  box-shadow: 0 6px 0 rgba(0,0,0,0.15);
+  transition: all 0.1s ease;
+}
+
+.cell.center {
+  background: #f7da21;
+  color: #000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 6px 0 #c4ac1a;
+  z-index: 10;
+}
+
+/* Precise Honeycomb Positioning */
+#cell-0 { top: 0; left: 50%; transform: translateX(-50%); }
+#cell-1 { top: 18%; left: 195px; }
+#cell-2 { bottom: 18%; left: 195px; }
+#cell-3 { bottom: 0; left: 50%; transform: translateX(-50%); }
+#cell-4 { bottom: 18%; left: 10px; }
+#cell-5 { top: 18%; left: 10px; }
+
+.cell:active {
+  transform: translateY(4px) !important;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.15) !important;
+}
+
+.cell.center:active {
+  transform: translate(-50%, calc(-50% + 4px)) !important;
+}
+
+/* --- Input Area & Opacity Logic --- */
+.word-input-area {
+  font-size: 2.5rem;
+  font-weight: 800;
+  height: 4rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-letter-highlight {
+  color: #f7da21;
+}
+
+.invalid-letter {
+  opacity: 0.3; /* Faded for letters not in the hive */
+}
+
+/* Shake animation for errors */
+.shake {
+  animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}

@@ -1,0 +1,146 @@
+[
+  {
+    "groups": [
+      { "label": "SHARP OBJECTS", "words": ["THORN", "NEEDLE", "TACK", "SPIKE"] },
+      { "label": "SYNONYMS FOR FAST", "words": ["QUICK", "SWIFT", "FLEET", "RAPID"] },
+      { "label": "PARTS OF A BIRD", "words": ["WING", "BEAK", "CLAW", "FEATHER"] },
+      { "label": "___ BOARD", "words": ["KEY", "DASH", "CHESS", "OUIJA"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "COOKING METHODS", "words": ["ROAST", "STEAM", "GRILL", "POACH"] },
+      { "label": "FOOTBALL ACTIONS", "words": ["PUNT", "PASS", "SACK", "SNAP"] },
+      { "label": "WORDS FOR 0", "words": ["LOVE", "NIL", "ZILCH", "ZIP"] },
+      { "label": "SILENT 'L'", "words": ["WALK", "COULD", "PALM", "YOLK"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "UNITS OF MEASURE", "words": ["FOOT", "YARD", "INCH", "MILE"] },
+      { "label": "PARTS OF A TREE", "words": ["ROOT", "LEAF", "BRANCH", "TRUNK"] },
+      { "label": "CAR STORAGE", "words": ["BOOT", "TRUNK", "GLOVEBOX", "HOOD"] },
+      { "label": "WORDS BEFORE 'BALL'", "words": ["SNOW", "FIRE", "BASE", "GOLF"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "TYPES OF COINS", "words": ["DIME", "NICKEL", "PENNY", "QUARTER"] },
+      { "label": "WOODWIND INSTRUMENTS", "words": ["FLUTE", "OBOE", "CLARINET", "BASSOON"] },
+      { "label": "VALUABLE METALS", "words": ["GOLD", "SILVER", "COPPER", "PLATINUM"] },
+      { "label": "STARTS WITH A GREEK LETTER", "words": ["ALPHABET", "BETRAYAL", "GAMUT", "DELTAS"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "CARD GAMES", "words": ["POKER", "BRIDGE", "RUMMY", "WAR"] },
+      { "label": "THINGS THAT ARE SHARP", "words": ["KNIFE", "WIT", "RAZOR", "CHEDDAR"] },
+      { "label": "MILITARY RANKS", "words": ["MAJOR", "GENERAL", "CAPTAIN", "PRIVATE"] },
+      { "label": "WORDS ENDING IN 'Y'", "words": ["BREAD", "DOUGH", "MONEY", "LOLLY"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "SNAKE TYPES", "words": ["COBRA", "PYTHON", "MAMBA", "VIPER"] },
+      { "label": "COMPUTER PERIPHERALS", "words": ["MOUSE", "MONITOR", "KEYBOARD", "PRINTER"] },
+      { "label": "REPTILES", "words": ["TURTLE", "LIZARD", "GECKO", "IGUANA"] },
+      { "label": "NICKNAMES FOR NY", "words": ["GOTHAM", "EMPIRE", "BIG APPLE", "METROPOLIS"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "GEMS", "words": ["RUBY", "PEARL", "DIAMOND", "JADE"] },
+      { "label": "PROGRAMMING LANGUAGES", "words": ["RUBY", "PYTHON", "JAVA", "SWIFT"] },
+      { "label": "COFFEE TYPES", "words": ["LATTE", "MOCHA", "JAVA", "BREW"] },
+      { "label": "TYPES OF TEA", "words": ["GREEN", "BLACK", "HERBAL", "EARL GREY"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "SHARP OBJECTS", "words": ["THORN", "NEEDLE", "TACK", "SPIKE"] },
+      { "label": "SYNONYMS FOR FAST", "words": ["QUICK", "SWIFT", "FLEET", "RAPID"] },
+      { "label": "PARTS OF A BIRD", "words": ["WING", "BEAK", "CLAW", "FEATHER"] },
+      { "label": "___ BOARD", "words": ["KEY", "DASH", "CHESS", "OUIJA"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "COOKING METHODS", "words": ["ROAST", "STEAM", "GRILL", "POACH"] },
+      { "label": "FOOTBALL ACTIONS", "words": ["PUNT", "PASS", "SACK", "SNAP"] },
+      { "label": "WORDS FOR 0", "words": ["LOVE", "NIL", "ZILCH", "ZIP"] },
+      { "label": "SILENT 'L'", "words": ["WALK", "COULD", "PALM", "YOLK"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "UNITS OF MEASURE", "words": ["FOOT", "YARD", "INCH", "MILE"] },
+      { "label": "PARTS OF A TREE", "words": ["ROOT", "LEAF", "BRANCH", "TRUNK"] },
+      { "label": "CAR STORAGE", "words": ["BOOT", "TRUNK", "GLOVEBOX", "HOOD"] },
+      { "label": "WORDS BEFORE 'BALL'", "words": ["SNOW", "FIRE", "BASE", "GOLF"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "TYPES OF COINS", "words": ["DIME", "NICKEL", "PENNY", "QUARTER"] },
+      { "label": "WOODWIND INSTRUMENTS", "words": ["FLUTE", "OBOE", "CLARINET", "BASSOON"] },
+      { "label": "VALUABLE METALS", "words": ["GOLD", "SILVER", "COPPER", "PLATINUM"] },
+      { "label": "STARTS WITH A GREEK LETTER", "words": ["ALPHABET", "BETRAYAL", "GAMUT", "DELTAS"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "CARD GAMES", "words": ["POKER", "BRIDGE", "RUMMY", "WAR"] },
+      { "label": "THINGS THAT ARE SHARP", "words": ["KNIFE", "WIT", "RAZOR", "CHEDDAR"] },
+      { "label": "MILITARY RANKS", "words": ["MAJOR", "GENERAL", "CAPTAIN", "PRIVATE"] },
+      { "label": "WORDS ENDING IN 'Y'", "words": ["BREAD", "DOUGH", "MONEY", "LOLLY"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "SNAKE TYPES", "words": ["COBRA", "PYTHON", "MAMBA", "VIPER"] },
+      { "label": "COMPUTER PERIPHERALS", "words": ["MOUSE", "MONITOR", "KEYBOARD", "PRINTER"] },
+      { "label": "REPTILES", "words": ["TURTLE", "LIZARD", "GECKO", "IGUANA"] },
+      { "label": "NICKNAMES FOR NY", "words": ["GOTHAM", "EMPIRE", "BIG APPLE", "METROPOLIS"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "GEMS", "words": ["RUBY", "PEARL", "DIAMOND", "JADE"] },
+      { "label": "PROGRAMMING LANGUAGES", "words": ["RUBY", "PYTHON", "JAVA", "SWIFT"] },
+      { "label": "COFFEE TYPES", "words": ["LATTE", "MOCHA", "JAVA", "BREW"] },
+      { "label": "TYPES OF TEA", "words": ["GREEN", "BLACK", "HERBAL", "EARL GREY"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "DANCES", "words": ["SALSA", "TANGO", "WALTZ", "JIVE"] },
+      { "label": "CONDIMENTS", "words": ["SALSA", "MUSTARD", "RELISH", "MAYO"] },
+      { "label": "ENJOY", "words": ["RELISH", "SAVOR", "LIKE", "LOVE"] },
+      { "label": "___ STEP", "words": ["QUICK", "SIDE", "FOOT", "BACK"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "COSMIC BODIES", "words": ["PLANET", "STAR", "COMET", "MOON"] },
+      { "label": "HOLLYWOOD VIPS", "words": ["STAR", "DIRECTOR", "PRODUCER", "AGENT"] },
+      { "label": "CLEANING BRANDS", "words": ["COMET", "AJAX", "PLEDGE", "TIDE"] },
+      { "label": "SYNONYMS FOR PROMISE", "words": ["PLEDGE", "VOW", "OATH", "WORD"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "TYPES OF CAKE", "words": ["POUND", "SPONGE", "MARBLE", "CARROT"] },
+      { "label": "CURRENCY UNITS", "words": ["POUND", "DOLLAR", "EURO", "YEN"] },
+      { "label": "CLEANING TOOLS", "words": ["SPONGE", "BROOM", "MOP", "DUSTER"] },
+      { "label": "THINGS THAT ARE ORANGE", "words": ["CARROT", "TIGER", "PUMPKIN", "CONE"] }
+    ]
+  },
+  {
+    "groups": [
+      { "label": "GOLF TERMS", "words": ["BIRDIE", "EAGLE", "PAR", "HOLE"] },
+      { "label": "BIRDS OF PREY", "words": ["EAGLE", "HAWK", "FALCON", "OSPREY"] },
+      { "label": "NOTCH", "words": ["HOLE", "DENT", "NICK", "SLOT"] },
+      { "label": "NICKNAMES", "words": ["NICK", "HANK", "BILL", "CHIP"] }
+    ]
+  }
+]
