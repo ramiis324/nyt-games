@@ -42,7 +42,7 @@
   {
     "groups": [
       { "label": "SNAKE TYPES", "words": ["COBRA", "PYTHON", "MAMBA", "VIPER"] },
-      { "label": "COMPUTER PERIPHERALS", "words": ["MOUSE", "MONITOR", "KEYBOARD", "PRINTER"] },
+      { "label": "COMPUTER PERIPHERALS", "words": ["MOUSE", "MONITOR", "KEYBOARD", "MICROPHONE"] },
       { "label": "REPTILES", "words": ["TURTLE", "LIZARD", "GECKO", "IGUANA"] },
       { "label": "NICKNAMES FOR NY", "words": ["GOTHAM", "EMPIRE", "BIG APPLE", "METROPOLIS"] }
     ]
@@ -98,7 +98,7 @@
   {
     "groups": [
       { "label": "SNAKE TYPES", "words": ["COBRA", "PYTHON", "MAMBA", "VIPER"] },
-      { "label": "COMPUTER PERIPHERALS", "words": ["MOUSE", "MONITOR", "KEYBOARD", "PRINTER"] },
+      { "label": "COMPUTER PERIPHERALS", "words": ["MOUSE", "MONITOR", "KEYBOARD", "MICROPHONE"] },
       { "label": "REPTILES", "words": ["TURTLE", "LIZARD", "GECKO", "IGUANA"] },
       { "label": "NICKNAMES FOR NY", "words": ["GOTHAM", "EMPIRE", "BIG APPLE", "METROPOLIS"] }
     ]
@@ -106,7 +106,7 @@
   {
     "groups": [
       { "label": "GEMS", "words": ["RUBY", "PEARL", "DIAMOND", "JADE"] },
-      { "label": "PROGRAMMING LANGUAGES", "words": ["RUBY", "PYTHON", "JAVA", "SWIFT"] },
+      { "label": "POPULAR MOVIES", "words": ["ALIEN", "AVATAR", "JAWS", "TITANIC"] },
       { "label": "COFFEE TYPES", "words": ["LATTE", "MOCHA", "JAVA", "BREW"] },
       { "label": "TYPES OF TEA", "words": ["GREEN", "BLACK", "HERBAL", "EARL GREY"] }
     ]
