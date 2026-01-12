@@ -8,38 +8,39 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <i>UNDER DEVELOPMENT</i>
   <nav class="top-nav" aria-label="Games navigation">
-    <div class="top-nav-inner">
-      <div class="nav-row" role="tablist" aria-label="Games">
-        <a class="nav-btn" role="tab" aria-selected="false" aria-label="Pips" data-game="pips" href="../Pips/index.html">
-          <img class="nav-icon" src="../icons/pips.png" alt="Pips" />
-        </a>
-        <a class="nav-btn" role="tab" aria-selected="false" aria-label="Connections" data-game="connections" href="../Connections/index.html">
-          <img class="nav-icon" src="../icons/connections.png" alt="Connections" />
-        </a>
-        <a class="nav-btn" role="tab" aria-selected="false" aria-label="Wordle" data-game="wordle" href="../Wordle/index.html">
-          <img class="nav-icon" src="../icons/wordle.webp" alt="Wordle" />
-        </a>
-        <a class="nav-btn" role="tab" aria-selected="false" aria-label="Strands" data-game="strands" href="../Strands/index.html">
-          <img class="nav-icon" src="../icons/strands.webp" alt="Strands" />
-        </a>
-        <a class="nav-btn" role="tab" aria-selected="true" aria-label="Spelling Bee" data-game="spellingbee" href="./index.html">
-          <img class="nav-icon" src="../icons/spelling-bee.webp" alt="Spelling Bee" />
-        </a>
-      </div>
-    </div>
-  </nav>
+        <div class="top-nav-inner">
+            <div class="nav-row" role="tablist" aria-label="Games">
+                <a class="nav-btn" role="tab" aria-selected="false" aria-label="Pips" data-game="pips" href="../Pips/index.html">
+                    <img class="nav-icon" src="../icons/pips.png" alt="Pips"/>
+                </a>
+                <a class="nav-btn" role="tab" aria-selected="false" aria-label="Connections" data-game="connections" href="../Connections/index.html">
+                    <img class="nav-icon" src="../icons/connections.png" alt="Connections"/>
+                </a>
+                <a class="nav-btn" role="tab" aria-selected="false" aria-label="Wordle" data-game="wordle" href="./index.html">
+                    <img class="nav-icon" src="../icons/wordle.webp" alt="Wordle"/>
+                </a>
+                <a class="nav-btn" role="tab" aria-selected="false" aria-label="Strands" data-game="strands" href="../Strands/index.html">
+                    <img class="nav-icon" src="../icons/strands.webp" alt="Strands"/>
+                </a>
+                <a class="nav-btn" role="tab" aria-selected="true" aria-label="Spelling Bee" data-game="spellingbee" href="../SpellingBee/index.html">
+                    <img class="nav-icon" src="../icons/spelling-bee.webp" alt="Spelling Bee"/>
+                </a>
+            </div>
+        </div>
+    </nav>
 
   <main class="spelling-bee">
     <div class="score-section">
       <div class="rank-container">
-        <span id="rank-name">Beginner</span>
-        <span id="points-to-next">Next level at 10 pts</span>
+        <span id="rank-name">Level 1</span>
+        <span id="points-to-next">20 pts to Level 2</span>
       </div>
       <div class="progress-bar-bg">
         <div id="progress-fill" style="width: 0%"></div>
       </div>
-      <div class="current-score-display">Score: <span id="current-score">0</span></div>
+      <div class="current-score-display">Total Score: <span id="current-score">0</span></div>
     </div>
 
     <div id="toast" class="toast hidden"></div>
@@ -71,6 +72,15 @@
     </div>
   </main>
 
+  <script>
+    // Navigation logic to match Connections/Wordle
+    document.addEventListener('DOMContentLoaded', function(){
+      requestAnimationFrame(()=>{
+        const nav = document.querySelector('.top-nav');
+        if(nav) setTimeout(()=> nav.classList.add('open'), 120);
+      });
+    });
+  </script>
   <script src="script.js"></script>
 </body>
 </html>

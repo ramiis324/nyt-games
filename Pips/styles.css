@@ -1,8 +1,76 @@
-@import url("../Wordle/styles.css");
+:root {
+  --bg: #ffffff;
+  --region-sum: #fce4ec; /* Pink */
+  --region-equal: #e0f2f1; /* Teal */
+  --region-diff: #fff3e0; /* Orange */
+}
 
-/* Page-specific overrides for Pips (kept minimal)
-   This file intentionally imports the shared nav/game styles
-   so each page can later be customized independently. */
+body { font-family: sans-serif; background: #f4f4f4; display: flex; justify-content: center; padding: 20px; }
+.pips-container { width: 100%; max-width: 400px; text-align: center; }
 
-main { padding: 28px; text-align: center; }
-main h1 { margin: 6px 0 8px; font-size: 20px; }
+/* Grid Layout */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  background: #ccc;
+  padding: 4px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.cell {
+  aspect-ratio: 1/1;
+  background: white;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  position: relative;
+}
+
+/* Region Rule Icons */
+.cell::after {
+  content: attr(data-rule);
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  font-size: 10px;
+  color: #888;
+}
+
+/* Domino Styles */
+.domino-tray {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  background: #eee;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.domino-piece {
+  display: flex;
+  border: 2px solid #333;
+  border-radius: 6px;
+  cursor: grab;
+  background: white;
+  transition: transform 0.1s;
+}
+
+.domino-half {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.domino-half:first-child { border-right: 1px solid #ccc; }
+
+.region-sum { background-color: var(--region-sum); }
+.region-equal { background-color: var(--region-equal); }
+.region-diff { background-color: var(--region-diff); }

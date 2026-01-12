@@ -53,53 +53,70 @@ const levelData = [
   { center: "X", outer: ["P", "L", "O", "R", "E", "S"] }
 ];
 
-
 let currentLevelIndex = 0;
+let score = 0;
+let levelScore = 0; // Tracks progress toward next level
+let foundWords = [];
+const XP_PER_LEVEL = 20;
+
+let currentInput = "";
 let centerLetter = levelData[currentLevelIndex].center;
 let outerLetters = levelData[currentLevelIndex].outer;
 let allowedLetters = [centerLetter, ...outerLetters];
 
-let currentInput = "";
-let score = 0;
-let foundWords = [];
-let nextLevelThreshold = 20;
-
+/**
+ * Initialization
+ */
 function init() {
   updateHive();
-  
+  updateUI();
+  setupEventListeners();
+}
+
+function setupEventListeners() {
+  // Keyboard support
   document.addEventListener("keydown", (e) => {
     if (e.key.length === 1 && e.key.match(/[a-z]/i)) {
       addLetter(e.key.toUpperCase());
     } else if (e.key === "Backspace") {
-      currentInput = currentInput.slice(0, -1);
-      updateDisplay();
+      deleteLetter();
     } else if (e.key === "Enter") {
       handleSubmit();
     }
   });
+
+  // Button support
+  document.getElementById("submit").onclick = handleSubmit;
+  document.getElementById("delete").onclick = deleteLetter;
+  document.getElementById("shuffle-hive").onclick = shuffleHive;
 }
 
+/**
+ * Game Logic
+ */
 function updateHive() {
+  centerLetter = levelData[currentLevelIndex].center;
+  outerLetters = [...levelData[currentLevelIndex].outer];
+  allowedLetters = [centerLetter, ...outerLetters];
+
   const centerEl = document.getElementById("cell-center");
   centerEl.textContent = centerLetter;
-  centerEl.classList.add("pop-in");
   centerEl.onclick = () => addLetter(centerLetter);
 
   outerLetters.forEach((l, i) => {
     const el = document.getElementById(`cell-${i}`);
     el.textContent = l;
-    el.classList.add("pop-in");
     el.onclick = () => addLetter(l);
-    // Remove class so it can be re-added for animation next level
-    setTimeout(() => el.classList.remove("pop-in"), 300);
   });
-  setTimeout(() => centerEl.classList.remove("pop-in"), 300);
-  
-  allowedLetters = [centerLetter, ...outerLetters];
 }
 
 function addLetter(l) {
   currentInput += l;
+  updateDisplay();
+}
+
+function deleteLetter() {
+  currentInput = currentInput.slice(0, -1);
   updateDisplay();
 }
 
@@ -110,42 +127,88 @@ function updateDisplay() {
   display.innerHTML = currentInput.split('').map(char => {
     const upperChar = char.toUpperCase();
     if (upperChar === centerLetter) return `<span class="center-letter-highlight">${upperChar}</span>`;
-    if (outerLetters.includes(upperChar)) return `<span>${upperChar}</span>`;
-    return `<span class="invalid-letter">${upperChar}</span>`;
+    return `<span>${upperChar}</span>`;
   }).join('');
 }
 
-function handleSubmit() {
+async function handleSubmit() {
   const word = currentInput.toUpperCase();
-  const hasInvalid = word.split('').some(l => !allowedLetters.includes(l));
 
-  if (hasInvalid) return triggerError("Bad letter");
+  // 1. Basic Rules Check
   if (word.length < 4) return triggerError("Too short");
   if (!word.includes(centerLetter)) return triggerError("Missing center letter");
   if (foundWords.includes(word)) return triggerError("Already found");
-
-  // Success
-  foundWords.push(word);
-  score += (word.length === 4) ? 1 : word.length;
-  showToast(`+${word.length} points!`);
   
-  checkLevelUp();
-  updateUI();
-  currentInput = "";
-  updateDisplay();
+  // 2. Dictionary Check (Actual Word Validation)
+  const isValid = await checkIsRealWord(word);
+  if (!isValid) return triggerError("Not in word list");
+
+  // 3. Success
+  const points = (word.length === 4) ? 1 : word.length;
+  processSuccess(word, points);
 }
 
-function checkLevelUp() {
-  if (score >= nextLevelThreshold && currentLevelIndex < levelData.length - 1) {
-    currentLevelIndex++;
-    centerLetter = levelData[currentLevelIndex].center;
-    outerLetters = levelData[currentLevelIndex].outer;
-    nextLevelThreshold += 20;
-    
-    showToast("LEVEL UP! NEW LETTERS!");
-    updateHive();
-    foundWords = []; // Reset words for new level
+async function checkIsRealWord(word) {
+  try {
+    const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word.toLowerCase()}`);
+    return response.ok; // If 200 OK, word exists. If 404, it doesn't.
+  } catch (err) {
+    // Fallback if API fails: allow words but log it (for offline development)
+    console.warn("Dictionary API unavailable, allowing word.");
+    return true; 
   }
+}
+
+function processSuccess(word, points) {
+  foundWords.push(word);
+  score += points;
+  levelScore += points;
+  
+  renderFoundWords();
+  showToast(`+${points} points!`);
+  currentInput = "";
+  updateDisplay();
+  
+  if (levelScore >= XP_PER_LEVEL) {
+    levelUp();
+  } else {
+    updateUI();
+  }
+}
+
+function levelUp() {
+  if (currentLevelIndex < levelData.length - 1) {
+    currentLevelIndex++;
+    levelScore = 0;
+    foundWords = []; // Clear for new level
+    renderFoundWords();
+    updateHive();
+    showToast("LEVEL UP! NEW LETTERS!");
+    updateUI();
+  } else {
+    showToast("Master! All levels complete!");
+    updateUI();
+  }
+}
+
+function updateUI() {
+  document.getElementById("rank-name").textContent = `Level ${currentLevelIndex + 1}`;
+  document.getElementById("current-score").textContent = score;
+  
+  const progress = Math.min((levelScore / XP_PER_LEVEL) * 100, 100);
+  document.getElementById("progress-fill").style.width = `${progress}%`;
+  
+  const remaining = XP_PER_LEVEL - levelScore;
+  document.getElementById("points-to-next").textContent = 
+    remaining > 0 ? `${remaining} pts to Level ${currentLevelIndex + 2}` : "Max Level!";
+}
+
+function renderFoundWords() {
+  const list = document.getElementById("found-words-list");
+  const count = document.getElementById("word-count");
+  
+  list.innerHTML = foundWords.map(word => `<div class="word-card">${word}</div>`).join('');
+  count.textContent = foundWords.length;
 }
 
 function triggerError(msg) {
@@ -155,20 +218,20 @@ function triggerError(msg) {
   setTimeout(() => {
     currentInput = "";
     updateDisplay();
-  }, 600);
+  }, 500);
 }
 
 function showToast(msg) {
   const toast = document.getElementById("toast");
   toast.textContent = msg;
+  toast.classList.remove("hidden");
   toast.classList.add("show");
   setTimeout(() => toast.classList.remove("show"), 2000);
 }
 
-function updateUI() {
-  document.getElementById("current-score").textContent = score;
-  const progress = (score % 20 / 20) * 100;
-  document.getElementById("progress-fill").style.width = `${progress}%`;
+function shuffleHive() {
+  outerLetters.sort(() => Math.random() - 0.5);
+  updateHive();
 }
 
 init();

@@ -2,66 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Strands — Demo</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" />
+  <title>Strands</title>
   <link rel="stylesheet" href="../Wordle/styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <nav class="top-nav" aria-label="Games navigation">
     <div class="top-nav-inner">
-      <div class="nav-row" role="tablist" aria-label="Games">
-        <a class="nav-btn" role="tab" aria-selected="false" aria-label="Pips" data-game="pips" href="../Pips/index.html">
-          <img class="nav-icon" src="../icons/pips.png" alt="Pips" />
-        </a>
-        <a class="nav-btn" role="tab" aria-selected="false" aria-label="Connections" data-game="connections" href="../Connections/index.html">
-          <img class="nav-icon" src="../icons/connections.png" alt="Connections" />
-        </a>
-        <a class="nav-btn" role="tab" aria-selected="false" aria-label="Wordle" data-game="wordle" href="../Wordle/index.html">
-          <img class="nav-icon" src="../icons/wordle.webp" alt="Wordle" />
-        </a>
-        <a class="nav-btn" role="tab" aria-selected="true" aria-label="Strands" data-game="strands" href="./index.html">
-          <img class="nav-icon" src="../icons/strands.webp" alt="Strands" />
-        </a>
-        <a class="nav-btn" role="tab" aria-selected="false" aria-label="Spelling Bee" data-game="spellingbee" href="../SpellingBee/index.html">
-          <img class="nav-icon" src="../icons/spelling-bee.webp" alt="Spelling Bee" />
-        </a>
+      <div class="nav-row">
+        <a class="nav-btn" href="../Connections/index.html"><img class="nav-icon" src="../icons/connections.png"></a>
+        <a class="nav-btn" href="../Wordle/index.html"><img class="nav-icon" src="../icons/wordle.webp"></a>
+        <a class="nav-btn" aria-selected="true" href="./index.html"><img class="nav-icon" src="../icons/strands.webp"></a>
+        <a class="nav-btn" href="../SpellingBee/index.html"><img class="nav-icon" src="../icons/spelling-bee.webp"></a>
       </div>
     </div>
   </nav>
 
-  <main style="padding:28px; text-align:center;">
-    <h1>Strands (Demo)</h1>
-    <p>This is a placeholder page. Navigation links to other games are wired.</p>
+  <main class="strands-main">
+    <div class="theme-header">
+      <h2 id="theme-hint">Loading...</h2>
+    </div>
+
+    <div class="hint-container">
+      <div id="hint-fill"></div>
+    </div>
+
+    <div id="grid" class="strands-grid"></div>
+
+    <div class="current-word-display">
+      <span id="active-word"></span>
+    </div>
+    
+    <div id="toast" class="toast hidden"></div>
   </main>
-  <script>
-    document.addEventListener('DOMContentLoaded', function(){
-      requestAnimationFrame(()=>{
-        const nav = document.querySelector('.top-nav');
-        if(nav) setTimeout(()=> nav.classList.add('open'), 120);
-      });
-      document.addEventListener('keydown', (e)=>{
-        const nav = document.querySelector('.top-nav');
-        if(!nav) return;
-        const items = Array.from(nav.querySelectorAll('.nav-btn'));
-        const activeIndex = items.findIndex(b=> b.getAttribute('aria-selected')==='true');
-        if(e.key === 'ArrowRight'){
-          const idx = (activeIndex + 1) % items.length;
-          items.forEach(b=> b.setAttribute('aria-selected','false'));
-          items[idx].setAttribute('aria-selected','true');
-          items[idx].focus();
-        } else if(e.key === 'ArrowLeft'){
-          const idx = (activeIndex - 1 + items.length) % items.length;
-          items.forEach(b=> b.setAttribute('aria-selected','false'));
-          items[idx].setAttribute('aria-selected','true');
-          items[idx].focus();
-        } else if(e.key === 'Enter' || e.key === ' ') {
-          const focused = document.activeElement;
-          if(focused && focused.classList.contains('nav-btn') && focused.href) {
-            window.location.href = focused.href;
-          }
-        }
-      });
-    });
-  </script>
+
+  <script src="script.js"></script>
 </body>
 </html>
